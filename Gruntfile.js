@@ -39,6 +39,9 @@ module.exports = function(grunt) {
                 }
             }
         },
+        htmlhint: {
+            src: 'index.html'
+        },
         sass: {
             options: {
                 sourceMap: true
@@ -50,18 +53,19 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['<%= jsFiles %>', '<%= sassFiles %>'],
-            tasks: ['jshint', 'sass']
+            tasks: ['jshint', 'htmlhint', 'sass']
         }
     });
 
     // load tasks
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-node-sass');
 
     // set up tasks
-    grunt.registerTask('test', ['jshint']);
-    grunt.registerTask('default', ['jshint', 'sass', 'concat', 'uglify']);
+    grunt.registerTask('test', ['jshint', 'htmlhint']);
+    grunt.registerTask('default', ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'watch']);
 };
