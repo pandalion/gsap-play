@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: ['<%= jsFiles %>'],
                 // the location of the resulting js file
-                dest: 'dist/<%=pkg.name %>.js'
+                dest: 'dist/scripts/<%=pkg.name %>.js'
             }
         },
         uglify: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'dist/scripts/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
@@ -51,9 +51,15 @@ module.exports = function(grunt) {
                 dest: 'dist/styles/main.css'
             }
         },
+        copy: {
+            main: {
+                src: 'index.html',
+                dest: 'dist/index.html'
+            }
+        },
         watch: {
-            files: ['<%= jsFiles %>', '<%= sassFiles %>'],
-            tasks: ['jshint', 'htmlhint', 'sass']
+            files: ['<%= jsFiles %>', '<%= sassFiles %>', 'index.html'],
+            tasks: ['jshint', 'htmlhint', 'sass', 'copy']
         }
     });
 
@@ -63,9 +69,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-node-sass');
 
     // set up tasks
     grunt.registerTask('test', ['jshint', 'htmlhint']);
-    grunt.registerTask('default', ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'watch']);
+    grunt.registerTask('default', ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'copy', 'watch']);
 };
