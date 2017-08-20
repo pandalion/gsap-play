@@ -1,0 +1,9 @@
+// select all headings from 1 to 6 in order to style them easier
+// usage example
+// #{headings(1,6)}
+// #{headings(1,4)}
+@function headings($from:1, $to:6)
+    @if $from == $to
+        @return 'h#{$from}'
+    @else
+        @return 'h#{$from},' + headings($from+1, $to)
