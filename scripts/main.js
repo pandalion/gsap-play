@@ -25,4 +25,21 @@ $(document).ready(function () {
         .addTo(controller);
     });
 
+    var changeCirclesOne = new ScrollMagic.Scene({
+        triggerElement: '#item02'
+    })
+    .setClassToggle('.circle', 'change-color-1')
+    .addTo(controller);
+
+    var changeCirclesTwo = new ScrollMagic.Scene({
+        triggerElement: '#item03'
+    })
+    .setClassToggle('.circle', 'change-color-2')
+    .addTo(controller);
+
+    var changeCirclesThree = new ScrollMagic.Scene({
+        triggerElement: '#item04'
+    })
+    .setClassToggle('.circle', 'change-color-3')
+    .addTo(controller);
 });

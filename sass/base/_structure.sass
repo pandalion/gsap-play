@@ -45,3 +45,42 @@ body
         line-height: 1.5
     &.fade-in
         opacity: 1
+
+.circle
+    width: 50px
+    height: 50px
+    border-radius: 100%
+    background: #fff
+    display: inline-block
+    opacity: 0.2
+    transition: all 0.5s ease-out
+    transform: translateX(0)
+    + .circle
+        margin-left: 20px
+
+    &.change-color-1
+        opacity: 1
+        &.one
+            background-color: #afeeee
+        &.two
+            background-color: #00ced1
+        &.three
+            background-color: #7fffd4
+
+    &.change-color-2
+        opacity: 1
+        &.one
+            background-color: #7fffd4
+        &.two
+            background-color: #afeeee
+        &.three
+            background-color: #00ced1
+
+    &.change-color-3
+        opacity: 1
+        &.one
+            background-color: #00ced1
+        &.two
+            background-color: #7fffd4
+        &.three
+            background-color: #afeeee
