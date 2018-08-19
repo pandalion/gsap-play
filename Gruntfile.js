@@ -15,6 +15,14 @@ module.exports = function(grunt) {
                 dest: 'dist/scripts/<%=pkg.name %>.js'
             }
         },
+        connect: {
+            server: {
+              options: {
+                port: 4000,
+                base: 'dist'
+              }
+            }
+        },
         uglify: {
             options: {
                 // the banner is inserted at the top of the output
@@ -69,10 +77,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-node-sass');
 
     // set up tasks
     grunt.registerTask('test', ['jshint', 'htmlhint']);
-    grunt.registerTask('default', ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'copy', 'watch']);
+    grunt.registerTask('default', ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'copy', 'connect', 'watch']);
 };
