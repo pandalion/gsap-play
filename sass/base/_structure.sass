@@ -13,8 +13,11 @@ body
         color: #fff
 
 .item
-    padding: 200px 0
-    text-align: center
+    @include flexbox
+    @include flex-direction(column)
+    @include align-items(center)
+    @include justify-content(center)
+    height: 100vh
     border-bottom: 1px #ebebeb solid
     opacity: 0
     transition: all 1s ease-out
