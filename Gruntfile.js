@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: ['<%= jsFiles %>'],
                 // the location of the resulting js file
-                dest: 'dist/scripts/<%=pkg.name %>.js'
+                dest: 'dist/scripts/main.js'
             }
         },
         connect: {
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/scripts/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'dist/scripts/main.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['<%= jsFiles %>', '<%= sassFiles %>', 'index.html'],
-            tasks: ['jshint', 'htmlhint', 'sass', 'copy']
+            tasks: ['jshint', 'htmlhint', 'sass', 'concat', 'uglify', 'copy']
         }
     });
 
