@@ -1,6 +1,9 @@
 body
+    background: #f4f4f4
+    color: #444
+    text-align: center
     font:
-        family: 'Roboto Condensed', sans-serif
+        family: 'Abril Fatface', cursive
         size: $base-font-size / 1.3
     @include media($min-px600)
         font:
@@ -12,6 +15,7 @@ body
 // https://alistapart.com/article/axiomatic-css-and-lobotomized-owls
 #{headings(1,6)}
     margin: 0
+    font-weight: 400
 
 * + #{headings(1,6)}
     margin-top: 1.2em
