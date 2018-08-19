@@ -5,6 +5,14 @@ $(document).ready(function () {
     // Tell scrollmagic to use scrollbar
     var controller = new ScrollMagic.Controller();
 
+    // pin the animation
+    var pinAnimation = new ScrollMagic.Scene({
+        triggerElement: '#stickyElement',
+        triggerHook: 0
+    })
+    .setPin('#stickyElement')
+    .addTo(controller);
+
     $('.item').each(function() {
         // Build a Scene
         var ourScene = new ScrollMagic.Scene({
@@ -14,12 +22,6 @@ $(document).ready(function () {
             duration: '90%'
         })
         .setClassToggle(this, 'fade-in')
-        .addIndicators({
-            name: 'fade scene',
-            colorTrigger: 'black',
-            indent: 10,
-            colorStart: 'black'
-        })
         .addTo(controller);
     });
 

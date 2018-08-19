@@ -1,16 +1,35 @@
+html,
+body
+    height: 100%
+
 body
     margin: 0
     padding: 0
 
+.flex-layout
+    @include flexbox
+    @include align-content(stretch)
+
 .intro
     @include flexbox
+    @include flex-grow(2)
+    @include flex-shrink(1)
+    @include flex-basis(0)
     @include flex-direction(column)
-    @include align-items(center)
-    @include justify-content(center)
     background: $turquoise
-    height: 100vh
     *
         color: #fff
+
+    .wrapper
+        @include flexbox
+        @include align-items(center)
+        @include justify-content(center)
+        height: 100vh
+
+.main-content
+    @include flex-grow(1)
+    @include flex-shrink(1)
+    @include flex-basis(0)
 
 .item
     @include flexbox
@@ -21,5 +40,8 @@ body
     border-bottom: 1px #ebebeb solid
     opacity: 0
     transition: all 1s ease-out
+    p
+        max-width: 300px
+        line-height: 1.5
     &.fade-in
         opacity: 1
